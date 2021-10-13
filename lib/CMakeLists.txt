@@ -1,0 +1,2 @@
+add_library(windowEngine windowEngine/src/SythConsole.cpp)
+target_include_directories(windowEngine PUBLIC windowEngine/include)
