@@ -4,7 +4,11 @@ set(CMAKE_CXX_STANDARD 17)
 add_definitions(-DUNICODE -D_UNICODE)
 project(Scavens)
 
-add_executable(${PROJECT_NAME} main.cpp src/Scavens.cpp)
+add_executable(${PROJECT_NAME}
+    main.cpp 
+    src/Scavens.cpp
+    src/PhysicalStatus.cpp
+)
 
 add_subdirectory(lib)
 

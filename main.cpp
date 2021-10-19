@@ -1,4 +1,4 @@
-#include "../include/Scavens.h"
+#include "Scavens.hpp"
 #include <iostream>
 #include <SythConsole.h>
 #include "Vector2D.hpp"
