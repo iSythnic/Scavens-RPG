@@ -4,6 +4,8 @@
 #include <vector>
 #include <SythConsole.h>
 #include "Utils.hpp"
+#include "Button.hpp"
+#include "Player.hpp"
 
 class Scavens : public Syth::consoleWindow
 {
@@ -16,4 +18,9 @@ class Scavens : public Syth::consoleWindow
         int menu();
         void gameLoop();
         void newGameLoop();
+
+    private:
+
+        Player m_Player;
+        
 };

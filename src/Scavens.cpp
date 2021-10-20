@@ -29,7 +29,7 @@ void Scavens::gameLoop()
     while (true)
     {
         drawString(1,1, L"GameLoop", Syth::COLOUR::FG_WHITE);
-        if (GetAsyncKeyState(VK_ESCAPE) & 0x8000)
+        if (EscapePress())
             break;
         
         update();
@@ -43,7 +43,7 @@ void Scavens::newGameLoop()
     while (true)
     {
         drawString(1,1, L"GameNewLoop", Syth::COLOUR::FG_WHITE);
-        if (GetAsyncKeyState(VK_ESCAPE) & 0x8000)
+        if (EscapePress())
             break;
         
         update();
@@ -55,6 +55,10 @@ void Scavens::newGameLoop()
 int Scavens::menu()
 {
 
+    Button gameStartButton {{33,32}, {60,41}};
+    Button newGameButton   {{33,48}, {60,57}};
+    Button exitGameButton  {{33,64}, {60,73}};
+
     while (true)
     {
         if (importMap("menu.smap"))
@@ -65,19 +69,25 @@ int Scavens::menu()
 
         updateInputEvents();
 
-        if (m_MouseX >= 33 && m_MouseX <= 60 && m_MouseY >= 32 && m_MouseY <= 41)
+        if (gameStartButton.MouseHover({m_MouseX, m_MouseY}))
         {
             drawLine({33, 43}, {61, 43}, ' ', Syth::BG_RED);
-            if (LeftButtonPress())
-                return GameStates::NewGame;
+            if (gameStartButton.MousePress({m_MouseX, m_MouseY}))
+                return GameStates::GameLoop;
         }
-        else if (m_MouseX >= 33 && m_MouseX <= 60 && m_MouseY >= 48 && m_MouseY <= 57)
+        else if (newGameButton.MouseHover({m_MouseX, m_MouseY}))
         {
             drawLine({33,59}, {61, 59}, ' ', Syth::BG_RED);
+
+            if (newGameButton.MousePress({m_MouseX, m_MouseY}))
+                return GameStates::NewGame;
         }
-        else if (m_MouseX >= 33 && m_MouseX <= 60 && m_MouseY >= 64 && m_MouseY <= 73)
+        else if (exitGameButton.MouseHover({m_MouseX, m_MouseY}))
         {
             drawLine({33, 75}, {61, 75}, ' ', Syth::BG_RED);
+            
+            if (exitGameButton.MousePress({m_MouseX, m_MouseY}))
+                return GameStates::ExitGame;
         }
 
         update();

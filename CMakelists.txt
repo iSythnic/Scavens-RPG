@@ -8,6 +8,10 @@ add_executable(${PROJECT_NAME}
     main.cpp 
     src/Scavens.cpp
     src/PhysicalStatus.cpp
+    src/Button.cpp
+    src/CurrencyStatus.cpp
+    src/Identification.cpp
+    src/Utils.cpp
 )
 
 add_subdirectory(lib)
