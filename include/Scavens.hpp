@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <SythConsole.h>
+#include "Utils.hpp"
 
 class Scavens : public Syth::consoleWindow
 {
@@ -14,5 +15,5 @@ class Scavens : public Syth::consoleWindow
         bool importMap(const std::string &fname);
         int menu();
         void gameLoop();
-        void gameNewLoop();
+        void newGameLoop();
 };

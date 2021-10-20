@@ -5,18 +5,18 @@ void Scavens::start()
     switch (menu())
     {
         //Game starting corresponds with the return value of 1
-        case 1:
+        case GameStates::GameLoop:
             gameLoop();
             break;
             
 
         //New game corresponds with the return value of 2
-        case 2:
-            gameNewLoop();
+        case GameStates::NewGame:
+            newGameLoop();
             break;
 
         //Exit game corresonds with the return value of 3
-        case 3:
+        case GameStates::ExitGame:
             break;
         
         default:
@@ -38,7 +38,7 @@ void Scavens::gameLoop()
     
 }
 
-void Scavens::gameNewLoop()
+void Scavens::newGameLoop()
 {
     while (true)
     {
@@ -68,6 +68,8 @@ int Scavens::menu()
         if (m_MouseX >= 33 && m_MouseX <= 60 && m_MouseY >= 32 && m_MouseY <= 41)
         {
             drawLine({33, 43}, {61, 43}, ' ', Syth::BG_RED);
+            if (LeftButtonPress())
+                return GameStates::NewGame;
         }
         else if (m_MouseX >= 33 && m_MouseX <= 60 && m_MouseY >= 48 && m_MouseY <= 57)
         {
@@ -76,19 +78,6 @@ int Scavens::menu()
         else if (m_MouseX >= 33 && m_MouseX <= 60 && m_MouseY >= 64 && m_MouseY <= 73)
         {
             drawLine({33, 75}, {61, 75}, ' ', Syth::BG_RED);
-        }
-
-        if (m_MouseX >= 33 && m_MouseX <= 60 && m_MouseY >= 32 && m_MouseY <= 41 && GetAsyncKeyState(VK_LBUTTON) & 0x8000)
-        {
-            return 1;   // Returns the number correspodning to starting the game
-        }
-        else if (m_MouseX >= 33 && m_MouseX <= 60 && m_MouseY >= 48 && m_MouseY <= 57 && GetAsyncKeyState(VK_LBUTTON) & 0x8000)
-        {
-            return 2;  // Returns the number corresodning to starting a new game
-        }
-        else if (m_MouseX >= 33 && m_MouseX <= 60 && m_MouseY >= 64 && m_MouseY <= 73 && GetAsyncKeyState(VK_LBUTTON) & 0x8000)
-        {
-            return 3; // returns the number to exit
         }
 
         update();

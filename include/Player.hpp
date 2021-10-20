@@ -8,5 +8,8 @@ class Player{
         
     private:
 
+        PhysicalStatus m_PhysicalStatus;
+        CurrencyStatus m_CurrencyStatus;
+        Vec2D<int>     m_Cord;
 
 };

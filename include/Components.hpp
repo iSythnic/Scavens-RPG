@@ -6,3 +6,4 @@
 
 #include "CurrencyStatus.hpp"
 
+#include "Vector2D.hpp"
